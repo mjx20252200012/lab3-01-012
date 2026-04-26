@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字展销平台</title>
+    <link rel="stylesheet" href="lab3-01-012-index.css">
+</head>
+<body>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="login-modal">
+            <div class="login-form" id="loginForm">
+                <h3>用户登录</h3>
+                <input type="text" id="loginUsername" placeholder="请输入用户名">
+                <input type="password" id="loginPassword" placeholder="请输入密码">
+                <div class="btn-group">
+                    <button class="login-btn" onclick="handleLogin()">登录</button>
+                    <button class="switch-btn" onclick="showRegister()">没有账号？去注册</button>
+                </div>
+                <p class="error-msg" id="loginError"></p>
+            </div>
+            <div class="register-form" id="registerForm">
+                <h3>用户注册</h3>
+                <input type="text" id="regUsername" placeholder="请输入用户名">
+                <input type="password" id="regPassword" placeholder="请输入密码">
+                <input type="password" id="regConfirmPassword" placeholder="请确认密码">
+                <div class="btn-group">
+                    <button class="register-btn" onclick="handleRegister()">注册</button>
+                    <button class="switch-btn" onclick="showLogin()">已有账号？去登录</button>
+                </div>
+                <p class="error-msg" id="regError"></p>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="logo">
+            <img src="img/ldu.jpg" alt="平台Logo">
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">图书分类</a></li>
+                <li><a href="#">热门推荐</a></li>
+                <li><a href="#">新书上市</a></li>
+                <li><a href="#" onclick="openModal(); return false;">登录/注册</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </nav>
+        <div class="clearfix"></div>
+    </header>
+
+    <div class="container">
+        <aside class="left-sidebar">
+            <h3>图书分类</h3>
+            <ul>
+                <li><a href="#">文学小说</a></li>
+                <li><a href="#">计算机技术</a></li>
+                <li><a href="#">经管励志</a></li>
+                <li><a href="#">生活艺术</a></li>
+                <li><a href="#">少儿读物</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section class="book-show">
+                <h3>图书展示</h3>
+                <div class="book-list">
+                    <div class="book-item">
+                        <img src="img/system.jpg" alt="图书1">
+                        <div class="book-info">
+                            <h4>深入理解计算机系统</h4>
+                            <p>￥99.00</p>
+                        </div>
+                    </div>
+                    <div class="book-item">
+                        <img src="img/algorithm.png" alt="图书2">
+                        <div class="book-info">
+                            <h4>算法导论</h4>
+                            <p>￥128.00</p>
+                        </div>
+                    </div>
+                    <div class="book-item">
+                        <img src="img/Cpp.jpg" alt="图书3">
+                        <div class="book-info">
+                            <h4>C语言程序设计</h4>
+                            <p>￥45.00</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </section>
+
+            <section class="hot-recommend">
+                <h3>热门推荐</h3>
+                <div class="recommend-list">
+                    <div class="recommend-item">
+                        <img src="img/live.png" alt="推荐1">
+                        <p>活着</p>
+                    </div>
+                    <div class="recommend-item">
+                        <img src="img/theordinaryworld.jpg" alt="推荐2">
+                        <p>平凡的世界</p>
+                    </div>
+                    <div class="recommend-item">
+                        <img src="img/thethreebodyproblem.jpg" alt="推荐3">
+                        <p>三体</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </section>
+
+            <section class="new-book">
+                <h3>新书上市</h3>
+                <table border="1" cellpadding="8" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>书名</th>
+                            <th>作者</th>
+                            <th>价格</th>
+                            <th>出版时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>长安的荔枝</td>
+                            <td>马伯庸</td>
+                            <td>￥45.00</td>
+                            <td>2025-01-01</td>
+                        </tr>
+                        <tr>
+                            <td>云边有个小卖部</td>
+                            <td>张嘉佳</td>
+                            <td>￥39.80</td>
+                            <td>2025-02-15</td>
+                        </tr>
+                        <tr>
+                            <td>蛤蟆先生去看心理医生</td>
+                            <td>罗伯特·戴博德</td>
+                            <td>￥49.80</td>
+                            <td>2025-03-01</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <aside class="right-sidebar">
+            <h3>限时促销</h3>
+            <div class="promo-item">
+                <img src="img/100minus50.png" alt="促销1">
+                <p>满100减50</p>
+            </div>
+            <div class="promo-item">
+                <img src="img/20offonnewbooks.png" alt="促销2">
+                <p>新书8折</p>
+            </div>
+        </aside>
+        <div class="clearfix"></div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 数字展销平台 版权所有</p>
+    </footer>
+
+    <script>
+        function openModal() {
+            document.getElementById('modalOverlay').style.display = 'flex';
+            showLogin();
+        }
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+            clearErrors();
+        }
+        function showRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+            clearErrors();
+        }
+        function clearErrors() {
+            document.getElementById('loginError').textContent = '';
+            document.getElementById('regError').textContent = '';
+        }
+
+        function handleRegister() {
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            const errorEl = document.getElementById('regError');
+
+            if (!username || !password || !confirmPassword) {
+                errorEl.textContent = '请填写所有字段';
+                return;
+            }
+            if (password !== confirmPassword) {
+                errorEl.textContent = '两次密码不一致';
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('users') || '[]');
+            if (users.find(u => u.username === username)) {
+                errorEl.textContent = '用户名已存在';
+                return;
+            }
+
+            users.push({ username, password });
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('注册成功！请登录');
+            showLogin();
+        }
+
+        function handleLogin() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const errorEl = document.getElementById('loginError');
+
+            if (!username || !password) {
+                errorEl.textContent = '请输入用户名和密码';
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                alert('登录成功！欢迎回来，' + username);
+                closeModal();
+            } else {
+                errorEl.textContent = '用户名或密码错误';
+            }
+        }
+
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+</html>
